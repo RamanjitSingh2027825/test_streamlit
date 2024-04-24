@@ -23,10 +23,6 @@ def main():
         os.makedirs(folder_path)
         st.info(f"The folder '{folder_name}' is created.")
     
-    # Display folder size
-    folder_size = get_folder_size(folder_path)
-    st.write(f"The size of the folder '{folder_name}' is: {folder_size / (1024*1024):.2f} MB")
-    
     # File uploader
     st.write("Upload files to the folder:")
     uploaded_files = st.file_uploader(label="Upload Files", accept_multiple_files=True)
@@ -46,5 +42,9 @@ def main():
         file_path = os.path.join(folder_path, file)
         file_size = os.path.getsize(file_path)
         st.sidebar.write(f"- {file} ({file_size / (1024*1024):.2f} MB)")
+
+    # Display folder size
+    folder_size = get_folder_size(folder_path)
+    st.write(f"The size of the folder '{folder_name}' is: {folder_size / (1024*1024):.2f} MB")
     
 main()
